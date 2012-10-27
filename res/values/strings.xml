@@ -18,10 +18,11 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
   <!-- Name of the application -->
-  <string name="app_name">Google Authenticator</string>
+  <string name="app_name">NFC Google Authenticator</string>
 
   <!-- Shortened version of the application name, without Google branding -->
   <string name="app_name_short">Authenticator</string>
+  <string name="app_name_nfc_short">NFC Authenticator</string>
 
   <!-- Title displayed at the top when adding new OTP account manually -->
   <string name="enter_key_title">Manual account entry</string>
@@ -61,6 +62,9 @@
        code. -->
   <string name="button_add_account_scan_barcode">Scan barcode</string>
 
+  <!-- Button on the Add Other Account screen that lets the user get the code with an NFC Tag
+       code. -->
+  <string name="button_add_account_scan_nfc_tag">Scan NFC Tag</string>
   <!-- Text of the button to advance to the Next page of a wizard.
        [CHAR LIMIT=12] -->
   <string name="button_next">Next</string>
@@ -103,7 +107,10 @@
   <string name="enter_pin">
     Enter this verification code if prompted during account sign-in:
   </string>
-
+<!-- Instruction message displayed on the main screen -->
+  <string name="enter_nfc">
+    Scan NFC Tag
+  </string>
   <!-- Label displayed before the integrity check, used to verify key was entered correctly -->
   <string name="check_code_title">Integrity check value</string>
 

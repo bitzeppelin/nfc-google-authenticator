@@ -27,42 +27,59 @@ import java.io.Serializable;
 
 /**
  * The page of the "Add account" flow that offers the user to add an account.
- * The page offers the user to scan a barcode or manually enter the account details.
- *
+ * The page offers the user to scan a barcode or manually enter the account
+ * details.
+ * 
  * @author klyubin@google.com (Alex Klyubin)
  */
 public class AddOtherAccountActivity extends WizardPageActivity<Serializable> {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-    setPageContentView(R.layout.add_other_account);
+		setPageContentView(R.layout.add_other_account);
 
-    findViewById(R.id.scan_barcode).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        scanBarcode();
-      }
-    });
-    findViewById(R.id.manually_add_account).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        manuallyEnterAccountDetails();
-      }
-    });
+		findViewById(R.id.scan_barcode).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						scanBarcode();
+					}
+				});
+		findViewById(R.id.manually_add_account).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						manuallyEnterAccountDetails();
+					}
+				});
+		findViewById(R.id.scan_nfc_tag).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						scanNFCTag();
+					}
+				});
+		
+		mRightButton.setVisibility(View.INVISIBLE);
+	}
 
-    mRightButton.setVisibility(View.INVISIBLE);
-  }
+	private void manuallyEnterAccountDetails() {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setClass(this, EnterKeyActivity.class);
+		startActivity(intent);
+	}
 
-  private void manuallyEnterAccountDetails() {
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.setClass(this, EnterKeyActivity.class);
-    startActivity(intent);
-  }
+	private void scanBarcode() {
+		startActivity(AuthenticatorActivity
+				.getLaunchIntentActionScanBarcode(this));
+		finish();
+	}
 
-  private void scanBarcode() {
-    startActivity(AuthenticatorActivity.getLaunchIntentActionScanBarcode(this));
-    finish();
-  }
+	private void scanNFCTag() {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setClass(this, NFCTagActivity.class);
+		startActivity(intent);
+	}
 }

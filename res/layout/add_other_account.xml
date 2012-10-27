@@ -36,5 +36,10 @@
       android:layout_marginTop="10sp"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />
+     <Button android:id="@+id/scan_nfc_tag"
+      android:text="@string/button_add_account_scan_nfc_tag"
+      android:layout_marginTop="10sp"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content" />
   </LinearLayout>
 </LinearLayout>

@@ -43,7 +43,17 @@ public interface OtpSource {
    * @return OTP as string code.
    */
   String getNextCode(String accountName) throws OtpSourceException;
-
+  /**
+   * Return the next OTP code for specified username and secret.
+   * This is for one time uses and when the user is not saved
+   * Invoking this function may change internal state of the OTP generator,
+   * for example advancing the counter.
+   *
+   * @param accountName Username, email address or other unique identifier for the account.
+   * @param secret Secret key
+   * @return OTP as string code.
+   */
+  String getNextCode(String accountName, String secret) throws OtpSourceException;
   /**
    * Generate response to a given challenge based on next OTP code.
    * Subclasses are not required to implement this method.

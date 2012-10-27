@@ -73,6 +73,14 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
         />
+         <TextView
+          android:id="@+id/enter_nfc_prompt"
+          android:text="@string/enter_nfc"
+          android:visibility="gone"
+          android:textAppearance="?android:attr/textAppearanceMedium"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+        />
       </LinearLayout>
     </LinearLayout>
   </ScrollView>
